@@ -50,6 +50,30 @@ def resume_page():
             text,
             height=300
         )
+        required_skills=[
+            "Python",
+            "Java",
+            "SQL",
+            "Git",
+            "Machine Learning",
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ]
+        st.subheader("Skill Analysis")
+        text=text.lower()
+        matched_skills=0
+        for skill in required_skills:
+            matched_skills+=1
+            if skill.lower() in text:
+                st.success(f"✅ {skill}")
+            else:
+                st.error(f"❌ {skill}")
+        score=(matched_skills/len(required_skills))*100
+        st.subheader("Resume Score")
+        st.progress(score/100)
+        st.write(f"Score: {score:.0f}%")
+
 
 main()
     
